@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easen.blog.dao.ArticleDao">
+	<cache type="com.easen.blog.util.RedisCache" />
+	<sql id="Field">
+		id,userid,
+		title,content,
+		issuetime,categoryid,
+		ishidden,type
+	</sql>
+    
+	<insert id="addArticle" parameterType="com.easen.blog.polo.Article">
+		<selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
+			select UUID()
+		</selectKey>
+		insert into article
+		(<include refid="Field"/>)
+		values(#{id},#{userId},#{title},#{content},#{issueTime},#{categoryId},#{isHidden},#{type})
+	</insert>
+	<update id="editArticle" parameterType="com.easen.blog.polo.Article">
+		update article
+		set title = #{title}, content = #{content}, categoryid = #{categoryId}, 
+		    ishidden = #{isHidden}, type = #{type}
+		where id = #{id}
+	</update>
+	<select id="findArticleById" parameterType="java.lang.String" resultType="com.easen.blog.polo.Article">
+		select <include refid="Field"/>
+		from article
+		where id = #{id}
+	</select>
+	<select id="findArticlesByUserId" parameterType="java.lang.String" resultType="com.easen.blog.polo.Article">
+		select a.*,u.username authorName,u.photourl photoUrl
+		from article a
+		left join user u on u.id = a.userid
+		where userid = #{userId}
+		order by issuetime desc
+	</select>
+	<select id="findIndexArticles" parameterType="java.util.HashMap" resultType="com.easen.blog.polo.Article">
+		select a.*,u.username authorName,u.photourl photoUrl
+		from article a
+		left join user u on u.id = a.userid 
+		where 1 = 1
+		<if test="userId != null and userId != ''">
+			and a.userid in(
+				select f.followuserid 
+				from follow f 
+				where f.userid = #{userId}
+			)
+		</if>
+		<if test="categoryId != null and categoryId != ''">
+			and a.categoryid in (
+				select c.id 
+				from category c 
+				where c.parentid=#{categoryId}
+		)
+		</if>
+		order by issuetime desc
+		limit #{start},#{end}
+	</select>
+	<select id="findCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*)
+		from article a
+		<if test="userId == null or userId == ''">
+			where 1 = 1
+		</if>
+		<if test="userId != null and userId != ''">
+			,follow f
+			where a.userid = f.followuserid and f.userid = #{userId}
+		</if>
+		<if test="categoryId != null and categoryId != ''">
+			and a.categoryid in (
+			select c.id from category c where c.parentid = #{categoryId})
+		</if>
+	</select>
+	<select id="findCommendArticles" parameterType="java.util.HashMap" resultType="com.easen.blog.polo.Article">
+		select a.*,u.username authorName,u.photourl photoUrl,count(l.id) likesCount
+		from article a
+		left join user u on u.id = a.userid
+		left join likes l on l.articleid = a.id
+		<if test="categoryId != null and categoryId != ''">
+			and a.categoryid in (
+				select c.id 
+				from category c 
+				where c.parentid=#{categoryId}
+		)
+		</if>
+		group by a.id
+		order by likesCount desc,issuetime asc
+		limit #{start},#{end}
+	</select>
+	<select id="findCountByUserIdAndType" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*)
+		from article
+		where 1 = 1
+		<if test="userId != null and userId != ''">
+			and userId = #{userId}
+		</if>
+		<if test="type != null and type != ''">
+			and type = #{type}
+		</if>
+	</select>
+	<select id="findAllArticles" parameterType="java.util.HashMap" resultType="com.easen.blog.polo.Article">
+		select a.* ,count(c.id) commentCount,ct.name categoryName
+		from article a
+		left join comment c on c.articleid = a.id
+		left join category ct on ct.id = a.categoryid
+		where 1 = 1
+		<if test="keyWord != null and keyWord != ''">
+			and title like CONCAT('%',#{keyWord},'%')
+		</if>
+		group by a.id
+		order by issuetime desc
+		<if test="all == null">
+			limit #{start},#{end}
+		</if>
+	</select>
+	<delete id="batchDelArticle" parameterType="java.lang.String">
+        delete from article where id in
+        <foreach item="ids" collection="array" open="(" separator="," close=")">
+            #{ids}
+        </foreach>
+    </delete>
+    <select id="findMarkArticle" parameterType="java.lang.String" resultType="com.easen.blog.polo.Article">
+    	select a.*,u.username authorName
+		from article a,user u
+		where a.id in
+		(select b.articleid
+		from bookmark b
+		where b.userid = #{userId})
+		and u.id = a.userid
+    	
+    </select>
+</mapper>

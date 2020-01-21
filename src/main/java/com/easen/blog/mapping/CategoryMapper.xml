@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easen.blog.dao.CategoryDao">
+	<cache type="com.easen.blog.util.RedisCache" />
+	<sql id="Field">
+		id,name,
+		parentid
+	</sql>
+	<select id="findFirstCategorys" resultType="com.easen.blog.polo.Category">
+		select <include refid="Field"/>
+		from category
+		where parentid is NULL
+		order by sort
+	</select>
+	<select id="findCategorysByPId" parameterType="java.lang.String" resultType="com.easen.blog.polo.Category">
+		select <include refid="Field"/>
+		from category
+		where parentid = #{parentId}
+		order by sort
+	</select>
+</mapper>

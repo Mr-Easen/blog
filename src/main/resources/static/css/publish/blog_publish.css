@@ -1,0 +1,98 @@
+﻿@charset 'utf-8';
+/*zjf20170915*/
+* {font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;margin: 0;padding:0;}
+a {text-decoration: none;color:#333;}
+a:hover {color: #000}
+textarea {resize: none;}
+input,button,input[type="button"] {outline: none;}
+button,input[type="button"]  {color:#FFF;background-color: #00baf2;line-height: 30px;border:none;padding:0px 20px;cursor: pointer;}
+button:hover,input[type="button"]:hover {opacity: .9;}
+input {border: 0 none !important;}
+label {margin-bottom: 0 !important;}
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {color: #999;}
+input:-moz-placeholder, textarea:-moz-placeholder {color: #999;}
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {color: #999;}
+
+/*markdown*/
+.mark-title {font-size: 30px;text-align: center;margin: 50px 0;}
+.editor-preview h1,.editor-preview h2,.editor-preview h3,.editor-preview h4,.editor-preview h5{margin-bottom:10px;}
+.editor-preview h1{border-bottom:1px solid #ddd;}
+.editor-preview h1{border-bottom:1px solid #e8e8e8;}
+.CodeMirror {height: 530px;}
+.link_msg {color: #999;line-height: 2;text-align: left;margin-left: 30px;}
+.input_desc {width: 340px;border: 1px solid #e8e8e8;margin: 0 auto 10px;}
+.input_link {width: 340px;border: 1px solid #e8e8e8;margin: 0 auto 30px;}
+.input_link input, .input_desc input {color: #666;line-height: 34px;padding: 0 10px;width: 320px;}
+/*select*/
+.pulldown {position: relative;background: #fff;border: 1px solid #e8e8e8;z-index: 2;}
+.pulldown p {padding: 0 20px 0 10px;height: 34px;line-height: 34px;font-size: 14px;color: #666;margin-right: 10px;background: #fff url(../../images/publish/08-1s.png) no-repeat right center;border-radius: 2px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.pulldown.on .pulldown-list {display: block;}
+.pulldown-list {position: absolute;left: 0;top: 34px;width: 94%;background: #fff;padding: 3%;margin-left: -1px;border: 1px solid #e8e8e8;border-radius: 2px;display: none;cursor: pointer;max-height: 120px;overflow-y: auto;}
+.pulldown-list li {height: 30px;line-height: 30px;font-size: 14px;color: #666;padding: 0 10px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.pulldown li:hover {color: #1e90ff;background: #eee;}
+.pulldown.on p {background: #fff url(../../images/publish/08-1.png) no-repeat right center;}
+/*写文章页*/
+.blog-title {margin-top: 30px;background: #fff;border: 1px solid #e8e8e8;border-radius: 2px;}
+.blog-title .pulldown {width: 100px;border: 0 none;border-right: 1px solid #e8e8e8;}
+.blog-title .pulldown p {height: 50px;line-height: 50px;text-align: center;}
+.blog-title .pulldown-list {margin-top: 16px;width: 80%;padding: 10%;}
+.titleCon {margin-left: 101px;}
+.blog-title input {line-height: 1.3;padding: 16px 0;font-size: 14px;color: #333;width: 100%;text-indent: 15px;}
+.reprint-list {margin-top: 22px;display: none;}
+.reprint-list input {margin-left: 12px;vertical-align: middle;margin-top: -2px !important;}
+.reprint-list label {font-size: 14px;color: #666;margin-left: 6px;line-height: 1;font-weight: normal;margin-right: 20px;}
+.blogEditor-box {position: relative;margin-top: 27px;background: #fff;overflow: hidden;}
+.blogEditor-box textarea  {height: 300px;width: 100%;}
+.select-box {margin-top: 27px;}
+.select-box .pulldown {width: 32%;margin-left: 1.5%;}
+.select-box .pulldown:first-child {margin-left: 0;}
+.select-tab {width: 98.8%;padding: 0 .6%;background: #fff;border: 1px solid #e8e8e8;margin-top: 27px;border-radius: 2px;}
+.select-tab span {height: 20px;line-height: 1.5;display: inline-block;padding: 0 12px;background: #eee;font-size: 14px;color: #4285f4;margin-right: 10px;cursor: pointer;}
+.select-tab span:first-child {margin-left: 0;}
+.select-tab em {display: inline-block;width: 7px;height: 7px;vertical-align: middle;background: url(../../images/publish/close_01.png) no-repeat;margin-left: 6px;cursor: pointer;}
+.select-tab input {min-width: 40%;line-height: 1.3;padding: 16px 0;font-size: 14px;color: #333;}
+.show-select-tab {padding: 15px 0;}
+.textarea-box {margin-top: 27px;}
+.textarea-box textarea {width: 98.8%;font-size: 14px;line-height: 30px;color: #333;padding: 10px .6%;border: 1px solid #e8e8e8;}
+.advanced-options {margin-top: 23px;padding-bottom: 30px;}
+.advanced-options p {display: inline-block;font-size: 14px;color: #999;padding-right: 18px;background: url(../../images/publish/01.png) no-repeat right center;cursor: pointer;}
+.advanced-options-box {display: none;margin-top: 27px;}
+.advanced-options-box input {vertical-align: middle;margin-top: -2px !important;}
+.advanced-options-box label {font-size: 14px;color: #333;margin-left: 6px;margin-right: 22px;line-height: 1;}
+.public-box {padding: 10px 0;}
+.public-radio {margin-top: 10px;}
+.public-radio label {font-size: 14px;color: #333;margin-left: 6px;margin-right: 20px;}
+.public-box .btns p, .public-box .btns input {font-size: 14px;padding: 0 14px;text-align: center;border-radius: 4px;}
+.public-box .btns input.btn-1 {width: 130px;height: 40px;line-height: 40px;color: #fff;background: #4285f4;border: 1px solid #4285f4;margin-left: 10px;cursor: pointer;}
+.public-box .btns input.btn-1:hover {background: #3477e6;}
+.public-box .btns p.btn-2 {height: 38px;line-height: 38px;width: 100px;border: 1px solid #e8e8e8;color: #999;background: #fff;margin-left: 20px;cursor: pointer;}
+.public-box .btns p.btn-2:hover {color: #666;}
+.public-box .btns p.btn-3 {line-height: 40px;color: #999;display: none;}
+.publish-msg {font-size: 14px;color: #f00;display: none;}
+.switchEditor {position: absolute;right: 20px;top: 1px;line-height: 50px;color: #4285f4;font-weight: bold;font-size: 14px;z-index: 19;cursor: pointer;}
+.blogEditor-box a.switchEditor-Writer {position: absolute;right: 160px;top: 1px;line-height: 50px;color: #f00 !important;font-weight: bold;font-size: 14px;z-index: 19;cursor: pointer;}
+.blogEditor-box a.switchEditor-Writer-edit {position: absolute;right: 200px;top: -9px;line-height: 50px;color: #f00 !important;font-weight: bold;font-size: 14px;z-index: 19;cursor: pointer;}
+a.switchEditor:hover  {color: #4285f4;text-decoration: underline;}
+.switchEditor.md  {line-height: 22px;top: 5px;right: 28px;}
+.SubmitBtns, .SubmitBtns_admin {position: fixed;left: 0;bottom: 0;width:100%;z-index: 100;background: #FFF;border-top:1px solid #DDD;box-shadow: 0 0 3px #DDD;}
+.noFooter {padding-bottom: 60px;}
+
+/*Ravens Mask&&dialog*/
+#MaskS {display: none;position: fixed;left: 0;right: 0;bottom: 0;top: 0;z-index: 10000;}
+#MaskS .m1 {position: absolute;left:0;top:0;height: 32px;width: 50px;border-radius:2005px;border:2000px solid rgba(0,0,0,0.5);margin-left: -2000px;margin-top: -2000px;display: none;}
+#MaskS .Tips {max-width: 480px;min-width:300px;padding:30px 20px;background: #FFF;border-radius: 5px;left: 50%;top: 50%;z-index: 10000;position: absolute;line-height: 1.75;}
+#MaskS .Tips.m  {left: 0;top: 0;}
+#MaskS .Tips .Til {font-size: 20px;margin-bottom: 20px;}
+#MaskS .Tips .Con {margin-bottom: 20px;}
+#MaskS .Tips .Con ul  {list-style: none;line-height: 30px;font-size: 14px;color: #333;}
+#MaskS .Tips .Con ul i  {font: normal normal normal 14px/1 FontAwesome;margin:0 5px;}
+#MaskS .Tips .Con ul.noBg.one {line-height: 20px;margin-bottom: 20px;}
+#MaskS .Tips .Con div.ik  {font-size: 12px;color: #666;}
+#MaskS .Tips .Con div.ik input  {margin-top: 2px;margin-right: 5px;}
+#MaskS .Tips .btns button {margin: 0 30px;background: #4285f4;height: 34px;border:1px solid #4285f4;border-radius: 3px;line-height: 1;}
+#MaskS .Tips .btns button.ikonw {background: #FFF;color: #333;border-color: #DDD;}
+#MaskS .Tips .btns button.ikonw:hover {background:#4285f4;color: #FFF;border-color: #4285f4;}
+#MaskS .Tips button.cb {width: 24px;height: 24px;background: url(../../images/publish/close.png);position: absolute;right: 10px;top: 10px;cursor: pointer;padding: 0;}
+#MaskS .Tips .Con.first {}
+  #MaskS .Tips .Con.first ul  {background: #F5F5F5;padding:15px 30px;font-size: 12px;line-height:24px;color: #666;margin-bottom: 20px;}
+#MaskS .Tips .ff  {color: #FFF;font-size: 20px;text-align: center;position: absolute;line-height: 1;left: 0;right: 0;top: -10px;}

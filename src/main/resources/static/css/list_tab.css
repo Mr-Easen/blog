@@ -1,0 +1,31 @@
+﻿
+/*作者列表*/
+.search-artical-user li {position: relative;padding: 26px 10px;border-top: 1px solid #eee;}
+.search-artical-user .left {display: block;margin-left: 10px;}
+.search-artical-user .left img {display: block;width: 94px;height: 94px;border-radius: 50%;}
+.search-artical-user .center {margin-left: 20px;max-width: 600px;}
+.search-artical-user .center a {display: block;line-height: 1;}
+.search-artical-user .center .span1 {font-size: 16px;color:#333;margin-top: 10px;}
+.search-artical-user .center .span2 {color: #666;margin-top: 10px;white-space: nowrap;max-width: 950px;overflow: hidden;text-overflow: ellipsis;}
+.search-artical-user .center .span3 {margin-top: 20px;}
+.search-artical-user .center .span3 em {font-style: normal;font-size: 12px;color: #999;margin-right: 40px;}
+.search-artical-user .center .span3 em:first-child {}
+.search-artical-user .right {margin-top: 30px;margin-right: 20px;}
+.search-artical-user li:hover .center .span1 {color: #4285f4;}
+
+/*个人中心作者列表*/
+.follow-index-list li {padding: 30px 20px;}
+.follow-index-list .left {margin-left: 0;}
+.follow-index-list .left img {width: 72px;height: 72px;}
+.follow-index-list .center .span1 {margin-top: 8px;}
+.follow-index-list .center .span3 {margin-top: 26px;}
+
+/*关注作者列表推荐*/
+.follow-Recommend-list li {float: left;width: 380px;padding: 28px;border: 0 none;}
+.follow-Recommend-list .left img {width: 78px;height: 78px;}
+.follow-Recommend-list .center {margin-left: 30px;width: 150px;}
+.follow-Recommend-list .center .span1 {margin-top: 2px;}
+.follow-Recommend-list .center .span3 {margin-top: 20px;}
+.follow-Recommend-list .center .span3 em {margin-left: 12px;margin-right: 0;}
+.follow-Recommend-list .center .span3 em:first-child {margin-left: 0;margin-right: 0;}
+.follow-Recommend-list .right2 {margin-top: 20px;margin-right: 0;margin-left: 10px;}

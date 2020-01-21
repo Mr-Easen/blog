@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easen.blog.dao.UserDao">
+	<cache type="com.easen.blog.util.RedisCache" />
+	<sql id="Field">
+		id,username,
+		password,email,
+		photourl,role,
+		registerdate
+	</sql>
+	
+	<select id="findUserById" parameterType="java.lang.String" resultType="com.easen.blog.polo.User">
+		select <include refid="Field"/> from user where id = #{id,jdbcType=VARCHAR};
+	</select>
+	
+	<insert id="addUser" parameterType="com.easen.blog.polo.User">
+		<!-- <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.String">
+			select UUID()
+		</selectKey> -->
+		insert into user 
+		(<include refid="Field"/>)
+		values(UUID(),#{userName},#{password},#{email},#{photoUrl},#{role},now())
+	</insert>
+	
+	<select id="findAllUser" resultType="com.easen.blog.polo.User" parameterType="java.lang.String">
+		select u.*, count(a.id) articleCount
+		from user u
+		left join article a
+		on a.userid = u.id
+		where role = '0'
+		<if test="_parameter != null and _parameter != ''">
+			and (username like CONCAT('%',#{_parameter},'%') or
+				 email like CONCAT('%',#{_parameter},'%')
+			)
+		</if>
+		group by u.id
+		order by registerdate desc
+	</select>
+	
+	<!-- 通过用户名或邮箱查询用户 -->
+	<select id="findUserByNameOrEmail" parameterType="java.lang.String" resultType="com.easen.blog.polo.User">
+		select <include refid="Field"/> 
+		from user
+		where email = #{key} or username = #{key} and role = 0
+	</select>
+	
+	<select id="findAdminByName" parameterType="java.lang.String" resultType="com.easen.blog.polo.User">
+		select <include refid="Field"/>
+		from user
+		where username = #{userName} and role = 1
+	</select>
+	<update id="editUser" parameterType="com.easen.blog.polo.User">
+		update user
+		set password = #{password}
+		where id = #{id}
+	</update>
+	<delete id="delUser" parameterType="java.lang.String">
+		delete from user
+		where id = #{id}
+	</delete>
+</mapper>

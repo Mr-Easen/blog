@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easen.blog.dao.CommentDao">
+	<cache type="com.easen.blog.util.RedisCache" />
+	<sql id="Field">
+		id,content,
+		articleid,senderid,
+		receiverid,parentid,
+		isreply,floor,createtime
+	</sql>
+	<select id="findCommentsByArticleId" parameterType="java.util.HashMap" resultType="com.easen.blog.polo.Comment">
+		select c.*,s.username senderName
+		from comment c
+		left join user s on s.id = c.senderid
+		where isreply = 0 and articleid = #{articleId} 
+		order by c.createtime
+		<if test="sort == 'desc'">
+			desc
+		</if>
+	</select>
+	<select id="findReplyByFloor" parameterType="java.util.HashMap" resultType="com.easen.blog.polo.Comment">
+		select c.*,s.username senderName,r.username receiverName
+		from comment c
+		left join user s on s.id = c.senderid
+		left join user r on r.id = c.receiverid
+		where isreply = 1 and floor = #{floor} and articleid = #{articleId}
+		order by c.createtime
+	</select>
+	<insert id="addComment" parameterType="com.easen.blog.polo.Comment">
+		<selectKey keyProperty="floor" order="BEFORE" resultType="java.lang.Integer">
+			<if test="isReply != 1">
+				select max(floor)+1
+				from comment
+				where articleid = #{articleId}
+			</if>
+			<if test="isReply == 1">
+				select distinct(floor)
+				from comment
+				where floor = #{floor} and articleid = #{articleId}
+			</if>
+			
+		</selectKey>
+		insert into comment
+		(<include refid="Field"/>)
+		values(#{id},#{content},#{articleId},#{senderId},#{receiverId},#{parentId},#{isReply},
+		<if test="isReply == 0">
+			<if test="floor == null or floor == ''">
+				1,
+			</if>
+			<if test="floor != null and floor != ''">
+				#{floor},
+			</if>
+		</if>
+		<if test="isReply == 1">
+			#{floor},
+		</if>
+		now()
+		)
+	</insert>
+	<select id="findCommentById" resultType="com.easen.blog.polo.Comment" parameterType="java.lang.String">
+		select c.*,s.username senderName, r.username receiverName
+		from comment c
+		left join user s on s.id = c.senderid
+		left join user r on r.id = c.receiverid
+		where c.id = #{id}
+	</select>
+	<select id="findCountByArticleId" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select count(*)
+		from comment
+		where articleid = #{articleId}
+	</select>
+	<delete id="delCommentById" parameterType="java.lang.String">
+		delete from comment
+		where id = #{id}
+	</delete>
+</mapper>
