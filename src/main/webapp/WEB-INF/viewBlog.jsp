@@ -59,7 +59,7 @@
 					<li class="more user"><a class="is-vip-bg-1"
 						href="javascript:;" target="_blank"> <img
 							class="is-vip-img is-vip-img-5" data-uid="11405449"
-							src="images/noavatar_middle.gif" />
+							src="static/images/noavatar_middle.gif" />
 					</a>
 						<div>
 							<a href="user/toMyBlog?userId=${user.id }">我的博客</a>
@@ -214,7 +214,7 @@
 						<div class="comment-creat">
 							<div class="is-vip-bg fl">
 								<a href="javascript:;" class="header-img"> <img
-									src="picture/noavatar_middle.gif" />
+									src="static/picture/noavatar_middle.gif" />
 								</a>
 							</div>
 							<div class="first-publish fr publish_user_id">
@@ -308,7 +308,7 @@
 								<div class="is-vip-bg-4">
 									<a class="left" href="javascript:;"> <img
 										class="is-vip-img is-vip-img-4" data-uid="8715198"
-										src="picture/noavatar_middle.gif" />
+										src="static/picture/noavatar_middle.gif" />
 
 									</a>
 								</div>
@@ -389,7 +389,7 @@
 			var index_url = 'http://blog.51cto.com/ityouknow';
 			var uc_url = 'http://ucenter.51cto.com/'
 			var blog_url = 'http://blog.51cto.com/'
-			var img_url = 'images/noavatar_middle.gif'
+			var img_url = 'static/images/noavatar_middle.gif'
 			var i_user_id = '${user.id}';
 			var c_user_id = '${author.id}';
 			var collect_url = 'http://blog.51cto.com/collect/add'

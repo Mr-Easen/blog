@@ -58,7 +58,7 @@
 				        </li>
 						<li class="more user">
 				          <a class="is-vip-bg-1" href="javascript:;" target="_blank">
-				            <img class="is-vip-img is-vip-img-5" data-uid="11405449" src="images/noavatar_middle.gif"/>
+				            <img class="is-vip-img is-vip-img-5" data-uid="11405449" src="staic/images/noavatar_middle.gif"/>
 				          </a>
 				          <div>
 				            <a href="user/toMyBlog?userId=${user.id }">我的博客</a>
@@ -150,7 +150,7 @@ function FollowBtnSucc(e){//1:未关注,2:已关注,3:互相关注
 			<div class="header-top">
                 <div class="is-vip-bg-2 fl">
     				<a href="javascript:;" class="a-img">
-                        <img class="is-vip-img is-vip-img-1" data-uid="11405449" src="picture/noavatar_middle_1.gif"/>
+                        <img class="is-vip-img is-vip-img-1" data-uid="11405449" src="static/picture/noavatar_middle_1.gif"/>
     				</a>
                 </div>
 				<div class="right">
@@ -269,7 +269,7 @@ function FollowBtnSucc(e){//1:未关注,2:已关注,3:互相关注
 	                        <div class="top ">
 	                            <div class="is-vip-bg fl">
 	                                <a href="javascript:;" class="a-img" target="_blank">
-	                                    <img class="avatar is-vip-img is-vip-img-4" data-uid="11405449" src="picture/noavatar_middle.gif"/>
+	                                    <img class="avatar is-vip-img is-vip-img-4" data-uid="11405449" src="static/picture/noavatar_middle.gif"/>
 	                                </a>
 	                            </div>
 	                            <a href="user/toMyBlog?userId=${item.userId }" class="name fl">${item.authorName }</a>
@@ -301,7 +301,7 @@ function FollowBtnSucc(e){//1:未关注,2:已关注,3:互相关注
 	                  <li>
 	                  <div class="is-vip-bg fl">
 	                      <a class="left" href="user/toMyBlog?userId=${item.id }" target="_blank">
-	                       	<img class="is-vip-img is-vip-img-4" data-uid="13561885" src="picture/noavatar_middle.gif" >
+	                       	<img class="is-vip-img is-vip-img-4" data-uid="13561885" src="static/picture/noavatar_middle.gif" >
 	                      </a>
 	                   </div>
 	
@@ -320,7 +320,7 @@ function FollowBtnSucc(e){//1:未关注,2:已关注,3:互相关注
 	                  <li>
 	                  <div class="is-vip-bg fl">
 	                      <a class="left" href="user/toMyBlog?userId=${item.id }" target="_blank">
-	                       	<img class="is-vip-img is-vip-img-4" data-uid="13561885" src="picture/noavatar_middle.gif" >
+	                       	<img class="is-vip-img is-vip-img-4" data-uid="13561885" src="static/picture/noavatar_middle.gif" >
 	                      </a>
 	                   </div>
 	
@@ -340,7 +340,7 @@ function FollowBtnSucc(e){//1:未关注,2:已关注,3:互相关注
 	                        <div class="top ">
 	                            <div class="is-vip-bg fl">
 	                                <a href="javascript:;" class="a-img" target="_blank">
-	                                    <img class="avatar is-vip-img is-vip-img-4" data-uid="11405449" src="picture/noavatar_middle.gif"/>
+	                                    <img class="avatar is-vip-img is-vip-img-4" data-uid="11405449" src="static/picture/noavatar_middle.gif"/>
 	                                </a>
 	                            </div>
 	                            <a href="user/toMyBlog?userId=${item.userId }" class="name fl">${item.authorName }</a>

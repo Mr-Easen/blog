@@ -83,11 +83,11 @@ IntroduceFn.prototype = {
             text += '<div class="comment-1 publish_user_id reply_id_box comment_number-list" rid="'+c.id+'"><input type="hidden" class="floor" value="'+c.floor+'"><div class="top">'
             text += '<div class="is-vip-bg-6 fl"><a href="'+blog_url+c.senderId+'" class="header-img">'
                 if(c.isvip == 1){
-                    text += '<img class="is-vip-img-bg is-vip-img-4" src="picture/noavatar_middle.gif" ><i class="vip-icon vip-icon-4"></i>'
+                    text += '<img class="is-vip-img-bg is-vip-img-4" src="static/picture/noavatar_middle.gif" ><i class="vip-icon vip-icon-4"></i>'
                 }else if(c.isvip == 2){
-                    text += '<img class="is-vip-img-bg is-vip-img-4" src="picture/noavatar_middle.gif" ><i class="vip-icon vip-icon-4 on"></i>'
+                    text += '<img class="is-vip-img-bg is-vip-img-4" src="static/picture/noavatar_middle.gif" ><i class="vip-icon vip-icon-4 on"></i>'
                 }else{
-                    text += '<img class="is-vip-img-bg is-vip-img-4" src="picture/noavatar_middle.gif" >'
+                    text += '<img class="is-vip-img-bg is-vip-img-4" src="static/picture/noavatar_middle.gif" >'
                 }
             text += '</a></div>'
             text += '<div class="fl"><p class="name"><a href="'+blog_url+c.senderId+'">'+c.senderName+'</a>'

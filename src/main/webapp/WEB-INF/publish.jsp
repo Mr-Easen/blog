@@ -67,7 +67,7 @@
         </li>
         <li class="more user">
           <a class="is-vip-bg-1" href="javascript:;" target="_blank">
-            <img class="is-vip-img is-vip-img-5" data-uid="11405449" src="picture/noavatar_middle.gif"/>
+            <img class="is-vip-img is-vip-img-5" data-uid="11405449" src="static/picture/noavatar_middle.gif"/>
           </a>
           <div>
             <a href="user/toMyBlog?userId=${user.id }">我的博客</a>
